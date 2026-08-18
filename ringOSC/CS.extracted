@@ -1,0 +1,18 @@
+* Created by KLayout
+*** My special header ***
+
+* cell CS
+* pin VDD
+* pin VSS
+* pin vctrl
+* pin vvctrl
+.SUBCKT CS VDD VSS vctrl vvctrl
+* device instance $1 r0 *1 -55.9,181.5 PMOS
+XM$1 vvctrl vvctrl VDD VDD PMOS L=30u W=20.4u AS=43.86p AD=43.86p PS=39.2u
++ PD=39.2u
+* device instance $3 r0 *1 -55.9,148.4 NMOS
+XM$3 \$1 vctrl VSS VSS NMOS L=30u W=6.8u AS=14.62p AD=14.62p PS=18.8u PD=18.8u
+* device instance $5 r0 *1 -55.9,157.7 NMOS
+XM$5 vvctrl vvctrl \$1 VSS NMOS L=30u W=6.8u AS=14.62p AD=14.62p PS=18.8u
++ PD=18.8u
+.ENDS CS

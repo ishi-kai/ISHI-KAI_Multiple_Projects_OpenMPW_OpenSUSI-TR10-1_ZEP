@@ -1,0 +1,8 @@
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/buffer.sch
+.subckt buffer vdd vout vin gnd
+*.PININFO vdd:B vin:I vout:O gnd:B
+MXM1 net1 vin gnd gnd NMOS w=10.4u l=3.4u
+MXM2 net1 vin vdd vdd PMOS w=30.6u l=3.4u
+MXM3 vout net1 gnd gnd NMOS w=10.4u l=3.4u
+MXM4 vout net1 vdd vdd PMOS w=30.6u l=3.4u
+.ends

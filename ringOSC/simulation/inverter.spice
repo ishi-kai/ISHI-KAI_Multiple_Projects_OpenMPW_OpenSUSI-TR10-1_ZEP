@@ -1,0 +1,10 @@
+** sch_path: /Users/noritsuna/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/inverter.sch
+.subckt inverter vdd vvctrl vout vin vctrl gnd
+*.PININFO vin:I vout:O vdd:B gnd:B vctrl:I vvctrl:I
+MXM1 vout vin net2 gnd NMOS w=3.4u l=3.4u
+MXM2 vout vin net1 vdd PMOS w=10.2u l=3.4u
+MXM3 net2 vctrl gnd gnd NMOS w=6.8u l=30u
+MXM4 net1 vvctrl vdd vdd PMOS w=20.4u l=30u
+XXC1 vout gnd gnd F_CSIO x=80u y=80u A=6.4n P=320u
+XXC2 vout gnd gnd F_CSIO x=80u y=80u A=6.4n P=320u
+.ends

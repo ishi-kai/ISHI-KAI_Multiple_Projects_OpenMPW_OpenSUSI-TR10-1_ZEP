@@ -1,0 +1,6 @@
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ZEP/inverter/big/inverter_big.sch
+.subckt inverter_big VDD A Q VSS
+*.PININFO A:I Q:O VDD:B VSS:B
+MM1 Q A VDD VDD PMOS w=1600u l=2u
+MM2 Q A VSS VSS NMOS w=680u l=2u
+.ends

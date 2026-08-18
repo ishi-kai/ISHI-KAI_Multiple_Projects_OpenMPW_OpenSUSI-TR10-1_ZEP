@@ -1,0 +1,18 @@
+* Created by KLayout
+*** My special header ***
+
+* cell buffer
+* pin VDD
+* pin VSS
+* pin vin
+* pin vout
+.SUBCKT buffer VDD VSS vin vout
+* device instance $1 r0 *1 -5.6,-0.2 PMOS
+XM$1 \$2 vin VDD VDD PMOS L=3.4u W=30.6u AS=59.16p AD=45.9p PS=52.4u PD=39.6u
+* device instance $4 r0 *1 13.6,-0.2 PMOS
+XM$4 VDD \$2 vout VDD PMOS L=3.4u W=30.6u AS=45.9p AD=59.16p PS=39.6u PD=52.4u
+* device instance $7 r0 *1 0.8,-25.3 NMOS
+XM$7 VSS vin \$2 VSS NMOS L=3.4u W=10.4u AS=22.36p AD=15.6p PS=24.2u PD=16.4u
+* device instance $9 r0 *1 13.6,-25.3 NMOS
+XM$9 VSS \$2 vout VSS NMOS L=3.4u W=10.4u AS=15.6p AD=22.36p PS=16.4u PD=24.2u
+.ENDS buffer

@@ -1,0 +1,49 @@
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/vco.sch
+.subckt vco vdd inv_out vout vctrl gnd
+*.PININFO vdd:B vout:O gnd:B vctrl:I inv_out:I
+x2 vdd net5 net1 inv_out vctrl gnd inverter
+x3 vdd net5 net2 net1 vctrl gnd inverter
+x4 vdd net5 net4 net2 vctrl gnd inverter
+x5 vdd net5 net3 net4 vctrl gnd inverter
+x1 vdd vout net7 gnd buffer
+x9 vdd net5 net6 net3 vctrl gnd inverter
+x6 vdd net5 net7 net6 vctrl gnd inverter
+x7 vdd net5 vctrl gnd CS
+.ends
+
+* expanding   symbol:  inverter.sym # of pins=6
+** sym_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/inverter.sym
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/inverter.sch
+.subckt inverter vdd vvctrl vout vin vctrl gnd
+*.PININFO vin:I vout:O vdd:B gnd:B vctrl:I vvctrl:I
+MXM1 vout vin net2 gnd NMOS w=3.4u l=3.4u
+MXM2 vout vin net1 vdd PMOS w=10.2u l=3.4u
+MXM3 net2 vctrl gnd gnd NMOS w=6.8u l=30u
+MXM4 net1 vvctrl vdd vdd PMOS w=20.4u l=30u
+XXC1 vout gnd gnd F_CSIO x=80u y=80u A=6.4n P=320u
+XXC2 vout gnd gnd F_CSIO x=80u y=80u A=6.4n P=320u
+.ends
+
+
+* expanding   symbol:  buffer.sym # of pins=4
+** sym_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/buffer.sym
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/buffer.sch
+.subckt buffer vdd vout vin gnd
+*.PININFO vdd:B vin:I vout:O gnd:B
+MXM1 net1 vin gnd gnd NMOS w=10.4u l=3.4u
+MXM2 net1 vin vdd vdd PMOS w=30.6u l=3.4u
+MXM3 vout net1 gnd gnd NMOS w=10.4u l=3.4u
+MXM4 vout net1 vdd vdd PMOS w=30.6u l=3.4u
+.ends
+
+
+* expanding   symbol:  CS.sym # of pins=4
+** sym_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/CS.sym
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/CS.sch
+.subckt CS vdd vvctrl vctrl gnd
+*.PININFO vdd:B vvctrl:O gnd:B vctrl:I
+MXM3 net1 vctrl gnd gnd NMOS w=6.8u l=30u
+MXM4 vvctrl vvctrl vdd vdd PMOS w=20.4u l=30u
+MXM1 vvctrl vvctrl net1 gnd NMOS w=6.8u l=30u
+.ends
+

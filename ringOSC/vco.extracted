@@ -1,0 +1,79 @@
+* Created by KLayout
+*** My special header ***
+
+* cell vco
+* pin VDD
+* pin gnd
+* pin inv_out
+* pin vctrl
+* pin vout
+.SUBCKT vco VDD gnd inv_out vctrl vout
+* cell instance $9 r0 *1 0,0
+X$9 \$I18 \$4 inv_out vctrl VDD gnd inverter
+* cell instance $10 r0 *1 616.8,181.6
+X$10 \$7 vout VDD gnd buffer
+* cell instance $23 r0 *1 686.4,-93.6
+X$23 \$4 VDD vctrl gnd CS
+* cell instance $38 r0 *1 572,0
+X$38 \$7 \$4 \$I17 vctrl VDD gnd inverter
+* cell instance $39 r0 *1 457.6,0
+X$39 \$I17 \$4 \$I16 vctrl VDD gnd inverter
+* cell instance $40 r0 *1 343.2,0
+X$40 \$I16 \$4 \$I15 vctrl VDD gnd inverter
+* cell instance $41 r0 *1 228.8,0
+X$41 \$I15 \$4 \$I14 vctrl VDD gnd inverter
+* cell instance $42 r0 *1 114.4,0
+X$42 \$I14 \$4 \$I18 vctrl VDD gnd inverter
+.ENDS vco
+
+* cell CS
+* pin vvctrl
+* pin VDD
+* pin vctrl
+* pin VSS
+.SUBCKT CS vvctrl VDD vctrl VSS
+* device instance $1 r0 *1 -55.9,181.5 PMOS
+XM$1 vvctrl vvctrl VDD VDD PMOS L=30u W=20.4u AS=43.86p AD=43.86p PS=39.2u
++ PD=39.2u
+* device instance $3 r0 *1 -55.9,148.4 NMOS
+XM$3 \$1 vctrl VSS VSS NMOS L=30u W=6.8u AS=14.62p AD=14.62p PS=18.8u PD=18.8u
+* device instance $5 r0 *1 -55.9,157.7 NMOS
+XM$5 vvctrl vvctrl \$1 VSS NMOS L=30u W=6.8u AS=14.62p AD=14.62p PS=18.8u
++ PD=18.8u
+.ENDS CS
+
+* cell inverter
+* pin vout
+* pin vvctrl
+* pin vin
+* pin vctrl
+* pin VDD
+* pin VSS
+.SUBCKT inverter vout vvctrl vin vctrl VDD VSS
+* device instance $1 r0 *1 -55.9,173.7 PMOS
+XM$1 \$1 vvctrl VDD VDD PMOS L=30u W=20.4u AS=43.86p AD=30.6p PS=39.2u PD=26.4u
+* device instance $3 r0 *1 -3.2,173.7 PMOS
+XM$3 \$1 vin vout VDD PMOS L=3.4u W=10.2u AS=15.3p AD=28.56p PS=13.2u PD=26u
+* device instance $4 r0 *1 -55.9,140.9 NMOS
+XM$4 \$2 vctrl VSS VSS NMOS L=30u W=6.8u AS=14.62p AD=10.2p PS=18.8u PD=12.8u
+* device instance $6 r0 *1 -3.2,140.9 NMOS
+XM$6 \$2 vin vout VSS NMOS L=3.4u W=3.4u AS=5.1p AD=9.52p PS=6.4u PD=12.4u
+* device instance $7 r90 *1 -40.7,-34.4 F_CSIO
+XC$7 vout VSS VSS F_CSIO C=3.84e-12 A=6400p P=320u X=80 Y=80 m=2
+.ENDS inverter
+
+* cell buffer
+* pin vin
+* pin vout
+* pin VDD
+* pin VSS
+.SUBCKT buffer vin vout VDD VSS
+* device instance $1 r0 *1 -5.6,-0.2 PMOS
+XM$1 \$2 vin VDD VDD PMOS L=3.4u W=30.6u AS=59.16p AD=45.9p PS=52.4u PD=39.6u
+* device instance $4 r0 *1 13.6,-0.2 PMOS
+XM$4 VDD \$2 vout VDD PMOS L=3.4u W=30.6u AS=45.9p AD=59.16p PS=39.6u PD=52.4u
+* device instance $7 r0 *1 0.8,-25.3 NMOS
+XM$7 VSS vin \$2 VSS NMOS L=3.4u W=10.4u AS=22.36p AD=15.6p PS=24.2u PD=16.4u
+* device instance $9 r0 *1 13.6,-25.3 NMOS
+XM$9 VSS \$2 vout VSS NMOS L=3.4u W=10.4u AS=15.6p AD=22.36p PS=16.4u PD=24.2u
+.ENDS buffer

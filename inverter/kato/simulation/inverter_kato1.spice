@@ -1,0 +1,6 @@
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ZEP/inverter/kato/inverter_kato1.sch
+.subckt inverter_kato1 A Q VSS VDD
+*.PININFO A:I Q:O VSS:B VDD:B
+MM1 Q A VDD VDD PMOS w=3.4u l=1u
+MM2 Q A VSS VSS NMOS w=3.4u l=1u
+.ends

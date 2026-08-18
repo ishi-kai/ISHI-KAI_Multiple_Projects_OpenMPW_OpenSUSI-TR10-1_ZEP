@@ -1,0 +1,23 @@
+* Created by KLayout
+*** My special header ***
+
+* cell inverter
+* pin VDD
+* pin VSS
+* pin vctrl
+* pin vin
+* pin vout
+* pin vvctrl
+.SUBCKT inverter VDD VSS vctrl vin vout vvctrl
+* device instance $1 r0 *1 -55.9,173.7 PMOS
+XM$1 \$1 vvctrl VDD VDD PMOS L=30u W=20.4u AS=43.86p AD=30.6p PS=39.2u PD=26.4u
+* device instance $3 r0 *1 -3.2,173.7 PMOS
+XM$3 \$1 vin vout VDD PMOS L=3.4u W=10.2u AS=15.3p AD=28.56p PS=13.2u PD=26u
+* device instance $4 r0 *1 -55.9,140.9 NMOS
+XM$4 \$2 vctrl VSS VSS NMOS L=30u W=6.8u AS=14.62p AD=10.2p PS=18.8u PD=12.8u
+* device instance $6 r0 *1 -3.2,140.9 NMOS
+XM$6 \$2 vin vout VSS NMOS L=3.4u W=3.4u AS=5.1p AD=9.52p PS=6.4u PD=12.4u
+* device instance $7 r90 *1 -40.7,-34.4 F_CSIO
+XC$7 vout VSS VSS F_CSIO C=3.84e-12 A=6400p P=320u X=79.9999990463
++ Y=80.0000009537 m=2
+.ENDS inverter

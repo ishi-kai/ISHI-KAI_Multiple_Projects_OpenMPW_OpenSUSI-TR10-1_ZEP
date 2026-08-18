@@ -1,0 +1,14 @@
+* Created by KLayout
+*** My special header ***
+
+* cell inverter_ssk
+* pin A
+* pin Q
+* pin VDD
+* pin VSS
+.SUBCKT inverter_ssk A Q VDD VSS
+* device instance $1 r0 *1 -22.25,0 PMOS
+XM$1 VDD A Q VDD PMOS L=1u W=200.6u AS=316.24p AD=316.24p PS=266u PD=266u
+* device instance $18 r0 *1 -22.25,-31 NMOS
+XM$18 VSS A Q VSS NMOS L=1u W=79.9u AS=125.96p AD=125.96p PS=138.2u PD=138.2u
+.ENDS inverter_ssk

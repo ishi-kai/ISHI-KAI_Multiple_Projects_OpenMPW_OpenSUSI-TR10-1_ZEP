@@ -1,0 +1,7 @@
+** sch_path: /mnt/c/Data/OneDrive/MyDocuments/Community/ISHIKAI/shuttle/OpenSUSI-TR10/2026/ringOSC/CS.sch
+.subckt CS vdd vvctrl gnd vctrl
+*.PININFO vdd:B vvctrl:O gnd:B vctrl:I
+MXM3 net1 vctrl gnd gnd NMOS w=6.8u l=30u
+MXM4 vvctrl vvctrl vdd vdd PMOS w=20.4u l=30u
+MXM1 vvctrl vvctrl net1 gnd NMOS w=6.8u l=30u
+.ends
